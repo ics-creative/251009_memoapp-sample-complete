@@ -1,11 +1,19 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
-import { MemoService } from './memo.service';
-import { Memo } from './db/memo.entity';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from "@nestjs/common";
+import { MemoService } from "./memo.service";
+import { Memo } from "./db/memo.entity";
 
 /**
  * メモのコントローラー
  */
-@Controller('/memos')
+@Controller("/memos")
 export class MemoController {
   constructor(private readonly memoService: MemoService) {}
 
@@ -21,8 +29,8 @@ export class MemoController {
    * メモを1件取得する
    * @param id メモID
    */
-  @Get(':id')
-  getMemo(@Param('id') id: number): Promise<Memo | null> {
+  @Get(":id")
+  getMemo(@Param("id") id: number): Promise<Memo | null> {
     return this.memoService.findOne(id);
   }
 
@@ -40,8 +48,11 @@ export class MemoController {
    * @param id メモID
    * @param memo 更新するメモ
    */
-  @Patch(':id')
-  updateMemo(@Param('id') id: number, @Body() memo: { title: string; content: string }): Promise<Memo | null> {
+  @Patch(":id")
+  updateMemo(
+    @Param("id") id: number,
+    @Body() memo: { title: string; content: string },
+  ): Promise<Memo | null> {
     return this.memoService.update(id, memo);
   }
 
@@ -49,8 +60,8 @@ export class MemoController {
    * メモを削除する
    * @param id メモID
    */
-  @Delete(':id')
-  deleteMemo(@Param('id') id: number): Promise<void> {
+  @Delete(":id")
+  deleteMemo(@Param("id") id: number): Promise<void> {
     return this.memoService.delete(id);
   }
 }

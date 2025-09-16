@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Memo } from './db/memo.entity';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Memo } from "./db/memo.entity";
 
 /**
  * メモのサービスクラス
@@ -47,7 +47,10 @@ export class MemoService {
    * @param id メモID
    * @param memo メモ
    */
-  async update(id: number, memo: { title: string; content: string }): Promise<Memo | null> {
+  async update(
+    id: number,
+    memo: { title: string; content: string },
+  ): Promise<Memo | null> {
     const updatedMemo = await this.memoRepository.findOne({ where: { id } });
     if (!updatedMemo) return null;
     updatedMemo.title = memo.title;

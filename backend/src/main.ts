@@ -1,13 +1,13 @@
-import { NestFactory } from '@nestjs/core';
-import { MemoModule } from './memo.module';
+import { NestFactory } from "@nestjs/core";
+import { MemoModule } from "./memo.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(MemoModule);
 
   // CORS設定（フロントエンドからアクセス可能にする）
   app.enableCors({
-    origin: 'http://localhost:5173', // フロントエンドのURL
-    methods: ['GET', "POST", "PATCH", "DELETE"],
+    origin: "http://localhost:5173", // フロントエンドのURL
+    methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
   });
 

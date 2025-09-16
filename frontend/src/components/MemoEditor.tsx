@@ -10,12 +10,7 @@ type MemoEditorProps = {
   onDelete?: (id: number) => void;
 };
 
-const MemoEditor: React.FC<MemoEditorProps> = ({
-  selectedMemo,
-  isCreating,
-  onSave,
-  onDelete,
-}) => {
+const MemoEditor: React.FC<MemoEditorProps> = ({ selectedMemo, isCreating, onSave, onDelete }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [saving, setSaving] = useState(false);

@@ -1,7 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 /**
- * メモのテーブル定義
+ * メモのデータ定義
  */
 @Entity()
 export class Memo {
